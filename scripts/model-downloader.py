@@ -14,7 +14,7 @@ aestheticembedding_path = f"{ext}/stable-diffusion-webui-aesthetic-gradients/aes
 vae_path = "/models/VAE"
 lora_path = "/models/Lora"
 lycoris_path = "/models/LyCORIS"
-
+modelscope_path = "/models/ModelScope"
 print("Model Downloader v1.0.4")
 print("Checking Directories...")
 if not os.path.exists(f"{sd_path}{checkpoint_path}"):
@@ -38,6 +38,9 @@ if not os.path.exists(f"{sd_path}{lora_path}"):
 if not os.path.exists(f"{sd_path}{lycoris_path}"):
    os.makedirs(f"{sd_path}{lycoris_path}")
    print ("Creating LyCORIS Folder")
+if not os.path.exists(f"{sd_path}{modelscope_path}"):
+   os.makedirs(f"{sd_path}{modelscope_path}")
+   print ("Creating ModelScope Folder")
 else:
      pass
 print("all Directories already Created.")
@@ -69,6 +72,9 @@ def folder(content_type):
          return downloadpath
     elif content_type == "LyCORIS(LoCon/LoHA)":
          downloadpath = lycoris_path
+         return downloadpath
+    elif content_type == "ModelScope":
+         downloadpath = modelscope_path
          return downloadpath
 
 def get_data_from_url(url, image, download_btn, out_text, info):
@@ -134,7 +140,7 @@ def on_ui_tabs():
     with gr.Blocks() as downloader:
          with gr.Row():
               with gr.Column():
-                   content_type = gr.Radio(label="1. Choose Content type", choices=["Checkpoint","Hypernetwork","TextualInversion/Embedding","AestheticGradient", "VAE", "LoRA", "LyCORIS(LoCon/LoHA)"])
+                   content_type = gr.Radio(label="1. Choose Content type", choices=["Checkpoint","Hypernetwork","TextualInversion/Embedding","AestheticGradient", "VAE", "LoRA", "LyCORIS(LoCon/LoHA)", "ModelScope"])
                    addnet = None
                    if os.path.exists(f"{sd_path}{ext}/sd-webui-additional-networks/models/lora"):
                       addnet = gr.Checkbox(label="save to Additional Networks", value=False, visible=True)
