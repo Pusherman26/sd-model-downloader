@@ -14,7 +14,7 @@ aestheticembedding_path = f"{ext}/stable-diffusion-webui-aesthetic-gradients/aes
 vae_path = "/models/VAE"
 lora_path = "/models/Lora"
 lycoris_path = "/models/LyCORIS"
-modelscope_path = "/models/ModelScope"
+modelscope_path = "/models/ModelScope/t2v/"
 print("Model Downloader v1.0.4")
 print("Checking Directories...")
 if not os.path.exists(f"{sd_path}{checkpoint_path}"):
